@@ -1728,7 +1728,7 @@ bool CvVideoWriter_GStreamer::writeFrame( const IplImage * image )
 #else
     buffer = gst_buffer_new_allocate (NULL, size, NULL);
     GstMapInfo info;
-    gst_buffer_map(buffer, &info, (GstMapFlags)GST_MAP_READ);
+    gst_buffer_map(buffer, &info, (GstMapFlags)GST_MAP_WRITE);
     memcpy(info.data, (guint8*)image->imageData, size);
     gst_buffer_unmap(buffer, &info);
     GST_BUFFER_DURATION(buffer) = duration;
